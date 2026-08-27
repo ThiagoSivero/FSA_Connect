@@ -1,0 +1,237 @@
+/* ================================================
+   login.css
+   Estilos específicos das páginas de Login e
+   Cadastro do FSA Connect.
+   ================================================ */
+
+/* -------------------------
+   Layout da página de login
+   ------------------------- */
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-bg);
+    padding: var(--spacing-md);
+}
+
+/* Container do card de login */
+.login-card {
+    width: 100%;
+    max-width: 420px;
+    background-color: var(--color-bg-card);
+    border-radius: var(--border-radius-xl);
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-xl) var(--spacing-xl);
+    animation: slideUp 0.35s ease;
+}
+
+/* Logo e cabeçalho */
+.login-card__header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.login-card__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.login-card__logo-img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.login-card__logo-badge {
+    width: 48px;
+    height: 48px;
+    background-color: var(--color-primary);
+    border-radius: var(--border-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-lg);
+    letter-spacing: -1px;
+}
+
+.login-card__title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-main);
+    margin-bottom: 0.25rem;
+}
+
+.login-card__subtitle {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+/* Formulário */
+.login-card__form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Campo de senha com botão de toggle */
+.input-password-wrapper {
+    position: relative;
+}
+
+.input-password-wrapper .form-input {
+    padding-right: 2.75rem;
+}
+
+.input-password-toggle {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    padding: 0.2rem;
+    transition: color var(--transition-fast);
+}
+
+.input-password-toggle:hover {
+    color: var(--color-text-main);
+}
+
+/* Link "Esqueceu a senha?" */
+.login-card__forgot {
+    text-align: right;
+    margin-top: calc(-1 * var(--spacing-xs));
+    margin-bottom: var(--spacing-md);
+}
+
+.login-card__forgot a {
+    font-size: var(--font-size-xs);
+    color: var(--color-accent);
+}
+
+/* Botão de submit com estado de loading */
+.btn-submit {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-submit .btn-text {
+    transition: opacity var(--transition-fast);
+}
+
+.btn-submit.loading .btn-text {
+    opacity: 0;
+}
+
+.btn-submit .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.btn-submit.loading .spinner {
+    display: inline-block;
+}
+
+/* Rodapé do card */
+.login-card__footer {
+    text-align: center;
+    margin-top: var(--spacing-lg);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.login-card__footer a {
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+}
+
+/* -------------------------
+   Cadastro - campos extras
+   ------------------------- */
+.register-card {
+    max-width: 480px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+/* Indicador de força da senha */
+.password-strength {
+    margin-top: var(--spacing-xs);
+}
+
+.password-strength__bar {
+    height: 4px;
+    border-radius: var(--border-radius-full);
+    background-color: var(--color-border);
+    overflow: hidden;
+    margin-bottom: 4px;
+}
+
+.password-strength__fill {
+    height: 100%;
+    border-radius: var(--border-radius-full);
+    width: 0%;
+    transition: width var(--transition-normal), background-color var(--transition-normal);
+}
+
+.password-strength__fill.weak   { width: 25%; background-color: var(--color-error); }
+.password-strength__fill.fair   { width: 50%; background-color: var(--color-warning); }
+.password-strength__fill.good   { width: 75%; background-color: #84CC16; }
+.password-strength__fill.strong { width: 100%;background-color: var(--color-success); }
+
+.password-strength__label {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+}
+
+/* Checkbox de termos */
+.form-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    cursor: pointer;
+}
+
+.form-checkbox input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    accent-color: var(--color-primary);
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.form-checkbox span {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+}
+
+/* -------------------------
+   Responsivo
+   ------------------------- */
+@media (max-width: 480px) {
+    .login-card {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
