@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed — FSA Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/feed.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<!-- ================================================
+     Navbar principal
+     ================================================ -->
+<nav class="navbar">
+
+    <!-- Botão hambúrguer (mobile) -->
+    <button class="navbar__hamburger" id="btnHamburger" aria-label="Abrir menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Logo -->
+    <a href="feed.html" class="navbar__logo">FSA <span>Connect</span></a>
+
+    <!-- Barra de busca -->
+    <div class="navbar__search">
+        <i class="fa-solid fa-magnifying-glass navbar__search-icon"></i>
+        <input
+            type="search"
+            id="searchInput"
+            placeholder="Pesquisa materiais, dúvidas ou disciplinas..."
+            autocomplete="off"
+        >
+    </div>
+
+    <!-- Usuário -->
+    <div class="navbar__user" id="navbarUser">
+        <div class="navbar__avatar" id="navbarAvatar">TS</div>
+        <span class="navbar__user-name" id="navbarUserName">Thiago Sivero Almeida</span>
+        <i class="fa-solid fa-chevron-down" style="font-size:0.7rem; opacity:0.7;"></i>
+
+        <!-- Dropdown -->
+        <div class="navbar__dropdown" id="navbarDropdown">
+            <a href="perfil.html">
+                <i class="fa-solid fa-user"></i> Meu Perfil
+            </a>
+            <a href="#" id="btnNotificacoes">
+                <i class="fa-solid fa-bell"></i> Notificações
+                <span style="margin-left:auto; background:#EF4444; color:#fff; border-radius:99px; padding:1px 7px; font-size:11px;" id="notifBadge">3</span>
+            </a>
+            <a href="pages/configuracoes.html">
+                <i class="fa-solid fa-gear"></i> Configurações
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="login.html" class="logout" id="btnLogout">
+                <i class="fa-solid fa-right-from-bracket"></i> Sair
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- Overlay para fechar sidebar no mobile -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- ================================================
+     Layout principal
+     ================================================ -->
+<div class="app-layout">
+
+    <!-- ============================================
+         Sidebar esquerda — navegação
+         ============================================ -->
+    <aside class="sidebar" id="sidebar">
+
+        <!-- Menu principal -->
+        <div class="sidebar__section">
+            <nav class="sidebar__nav">
+                <a href="feed.html" class="active" data-filter="all">
+                    <i class="fa-solid fa-house nav-icon"></i> Início
+                </a>
+                <a href="#" data-filter="duvida">
+                    <i class="fa-solid fa-circle-question nav-icon"></i> Dúvidas
+                </a>
+                <a href="#" data-filter="material">
+                    <i class="fa-solid fa-book nav-icon"></i> Materiais de Estudo
+                </a>
+                <a href="#" data-filter="networking">
+                    <i class="fa-solid fa-briefcase nav-icon"></i> Networking / Vagas
+                </a>
+            </nav>
+        </div>
+
+        <div class="sidebar__divider"></div>
+
+        <!-- Minhas comunidades -->
+        <div class="sidebar__section">
+            <p class="sidebar__title">Minhas Comunidades</p>
+            <nav class="sidebar__nav" id="sidebarComunidades">
+                <!-- Populado via JS -->
+            </nav>
+        </div>
+
+        <div class="sidebar__divider"></div>
+
+        <!-- Links extras -->
+        <div class="sidebar__section">
+            <nav class="sidebar__nav">
+                <a href="pages/quem-somos.html">
+                    <i class="fa-solid fa-circle-info nav-icon"></i> Sobre nós
+                </a>
+                <a href="pages/termos.html">
+                    <i class="fa-solid fa-file-lines nav-icon"></i> Termos de uso
+                </a>
+            </nav>
+        </div>
+
+    </aside>
+
+    <!-- ============================================
+         Conteúdo central — feed de posts
+         ============================================ -->
+    <main class="main-content">
+
+        <!-- Botão nova postagem -->
+        <div class="feed-new-post">
+            <a href="criar-post.html" class="btn btn--primary">
+                <i class="fa-solid fa-plus"></i>
+                Nova postagem
+            </a>
+        </div>
+
+        <!-- Filtros por tag -->
+        <div class="feed-filters" id="feedFilters">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="duvida">
+                <i class="fa-solid fa-circle-question"></i> Dúvidas
+            </button>
+            <button class="filter-btn" data-filter="material">
+                <i class="fa-solid fa-book"></i> Materiais
+            </button>
+            <button class="filter-btn" data-filter="discussao">
+                <i class="fa-solid fa-comments"></i> Discussões
+            </button>
+            <button class="filter-btn" data-filter="networking">
+                <i class="fa-solid fa-briefcase"></i> Networking
+            </button>
+        </div>
+
+        <!-- Lista de posts -->
+        <div class="posts-list" id="postsList">
+            <!-- Skeleton loader enquanto carrega -->
+            <div class="skeleton-card" id="skeletonLoader">
+                <div style="display:flex; gap:8px; align-items:center; margin-bottom:12px;">
+                    <div class="skeleton skeleton-line short"></div>
+                    <div class="skeleton skeleton-line short" style="width:20%;"></div>
+                </div>
+                <div class="skeleton skeleton-line long"></div>
+                <div class="skeleton skeleton-line medium" style="margin-top:6px;"></div>
+                <div class="skeleton skeleton-line full" style="margin-top:6px;"></div>
+                <div style="display:flex; gap:8px; align-items:center; margin-top:16px;">
+                    <div class="skeleton skeleton-circle"></div>
+                    <div class="skeleton skeleton-line medium"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botão carregar mais -->
+        <div class="load-more" id="loadMore" style="display:none;">
+            <button class="btn btn--outline" id="btnLoadMore">
+                <i class="fa-solid fa-arrow-down"></i> Carregar mais
+            </button>
+        </div>
+
+    </main>
+
+    <!-- ============================================
+         Sidebar direita — destaques + contribuintes
+         ============================================ -->
+    <aside class="aside">
+
+        <!-- Destaque do dia -->
+        <div class="aside-section">
+            <p class="aside-section__title">Destaque do Dia da FSA Connect</p>
+            <div class="highlight-list" id="highlightList">
+                <!-- Populado via JS -->
+            </div>
+        </div>
+
+        <!-- Top contribuintes -->
+        <div class="aside-section">
+            <p class="aside-section__title">Top Contribuintes da Semana</p>
+            <div class="contributor-list" id="contributorList">
+                <!-- Populado via JS -->
+            </div>
+        </div>
+
+        <!-- Footer da aside -->
+        <div class="aside-footer">
+            <div class="aside-footer__links">
+                <a href="pages/termos.html">Termos de uso</a>
+                <a href="pages/quem-somos.html">Sobre nós</a>
+                <a href="#">Staff</a>
+                <a href="feed.html">Home</a>
+                <a href="#">Posts</a>
+            </div>
+            <p class="aside-footer__copy">© 2026 FSA Connect · Todos os direitos reservados</p>
+        </div>
+
+    </aside>
+
+</div>
+
+<script src="js/utils.js"></script>
+<script src="js/api.js"></script>
+<script src="js/feed.js"></script>
+
+</body>
+</html>
