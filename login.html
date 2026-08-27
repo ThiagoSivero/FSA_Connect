@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login — FSA Connect</title>
+
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<!-- ================================================
+     Página de Login do FSA Connect
+     ================================================ -->
+<main class="login-page">
+    <div class="login-card">
+
+        <!-- Cabeçalho com logo -->
+        <div class="login-card__header">
+            <div class="login-card__logo">
+                <div class="login-card__logo-badge">FSA</div>
+            </div>
+            <h1 class="login-card__title">FSA Connect</h1>
+            <p class="login-card__subtitle">Faça login para acessar a plataforma</p>
+        </div>
+
+        <!-- Alerta de feedback (sucesso ou erro) -->
+        <div class="alert alert--error" id="alertLogin" role="alert">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span id="alertLoginMsg">E-mail ou senha incorretos.</span>
+        </div>
+
+        <!-- Formulário de login -->
+        <form class="login-card__form" id="formLogin" novalidate>
+
+            <!-- Campo: E-mail -->
+            <div class="form-group">
+                <label class="form-label" for="email">E-mail</label>
+                <input
+                    class="form-input"
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Digite seu e-mail"
+                    autocomplete="email"
+                    required
+                >
+                <span class="form-error" id="emailError">Insira um e-mail válido.</span>
+            </div>
+
+            <!-- Campo: Senha -->
+            <div class="form-group">
+                <label class="form-label" for="senha">Senha</label>
+                <div class="input-password-wrapper">
+                    <input
+                        class="form-input"
+                        type="password"
+                        id="senha"
+                        name="senha"
+                        placeholder="Digite sua senha"
+                        autocomplete="current-password"
+                        required
+                    >
+                    <!-- Botão para exibir/ocultar senha -->
+                    <button
+                        type="button"
+                        class="input-password-toggle"
+                        id="toggleSenha"
+                        aria-label="Mostrar ou ocultar senha"
+                    >
+                        <i class="fa-solid fa-eye" id="iconToggle"></i>
+                    </button>
+                </div>
+                <span class="form-error" id="senhaError">A senha é obrigatória.</span>
+            </div>
+
+            <!-- Link esqueceu a senha -->
+            <div class="login-card__forgot">
+                <a href="pages/recuperar-senha.html">Esqueceu a senha?</a>
+            </div>
+
+            <!-- Botão de entrar -->
+            <button type="submit" class="btn btn--primary btn--full btn--lg btn-submit" id="btnEntrar">
+                <span class="btn-text">Entrar</span>
+                <span class="spinner" id="spinnerLogin"></span>
+            </button>
+
+        </form>
+
+        <!-- Rodapé: link para cadastro -->
+        <div class="login-card__footer">
+            Não tem conta?
+            <a href="cadastro.html">Cadastre-se gratuitamente</a>
+        </div>
+
+    </div>
+</main>
+
+<!-- Script da página de login -->
+<script src="js/utils.js"></script>
+<script src="js/api.js"></script>
+<script src="js/login.js"></script>
+
+</body>
+</html>
