@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Postagem — FSA Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/criar-post.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<!-- ================================================
+     Navbar
+     ================================================ -->
+<nav class="navbar">
+    <button class="navbar__hamburger" id="btnHamburger" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+    </button>
+    <a href="feed.html" class="navbar__logo">FSA <span>Connect</span></a>
+    <div class="navbar__search">
+        <i class="fa-solid fa-magnifying-glass navbar__search-icon"></i>
+        <input type="search" id="searchInput" placeholder="PESQUISAR MATERIAIS, DÚVIDAS OU DISCIPLINAS...">
+    </div>
+    <div class="navbar__user" id="navbarUser">
+        <div class="navbar__avatar" id="navbarAvatar">TS</div>
+        <span class="navbar__user-name" id="navbarUserName">THIAGO SIVERO ALMEIDA</span>
+        <div class="navbar__dropdown" id="navbarDropdown">
+            <a href="perfil.html"><i class="fa-solid fa-user"></i> Meu Perfil</a>
+            <div class="dropdown-divider"></div>
+            <a href="login.html" class="logout" id="btnLogout">
+                <i class="fa-solid fa-right-from-bracket"></i> Sair
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- ================================================
+     Layout
+     ================================================ -->
+<div class="app-layout">
+
+    <!-- Sidebar esquerda -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar__section">
+            <nav class="sidebar__nav">
+                <a href="feed.html">
+                    <i class="fa-solid fa-house nav-icon"></i> Início
+                </a>
+                <a href="feed.html?filter=duvida">
+                    <i class="fa-solid fa-circle-question nav-icon"></i> Dúvidas
+                </a>
+                <a href="feed.html?filter=material">
+                    <i class="fa-solid fa-book nav-icon"></i> Materiais de Estudo
+                </a>
+                <a href="feed.html?filter=networking">
+                    <i class="fa-solid fa-briefcase nav-icon"></i> Networking / Vagas
+                </a>
+            </nav>
+        </div>
+        <div class="sidebar__divider"></div>
+        <div class="sidebar__section">
+            <p class="sidebar__title">Minhas Comunidades</p>
+            <nav class="sidebar__nav" id="sidebarComunidades"></nav>
+        </div>
+    </aside>
+
+    <!-- Conteúdo principal -->
+    <main class="main-content">
+        <div class="criar-post-page">
+
+            <!-- Cabeçalho -->
+            <div class="criar-post-page__header">
+                <h1 class="criar-post-page__title">Criar Nova Postagem</h1>
+            </div>
+
+            <form id="formCriarPost" novalidate>
+
+                <!-- ==============================
+                     TÍTULO
+                     ============================== -->
+                <div class="post-section">
+                    <label class="post-section__label" for="postTitulo">Título</label>
+                    <input
+                        class="post-titulo-input form-input"
+                        type="text"
+                        id="postTitulo"
+                        name="titulo"
+                        placeholder="Título da postagem... (Ex: Dúvida sobre listas encadeadas)"
+                        maxlength="200"
+                        required
+                    >
+                    <span class="form-error" id="tituloError">O título é obrigatório.</span>
+                </div>
+
+                <!-- ==============================
+                     COMUNIDADE
+                     ============================== -->
+                <div class="post-section">
+                    <div class="comunidade-header">
+                        <span class="post-section__label" style="margin:0;">Comunidade</span>
+                        <a href="#" class="comunidade-ver-todas" id="verTodasComunidades">Ver todas</a>
+                    </div>
+                    <div class="comunidade-grid" id="comunidadeGrid">
+                        <!-- Populado via JS -->
+                    </div>
+                    <span class="form-error" id="comunidadeError">Selecione uma comunidade.</span>
+                    <input type="hidden" id="comunidadeSelecionada" name="comunidade_id">
+                </div>
+
+                <!-- ==============================
+                     TAGS DE CONTEÚDO
+                     ============================== -->
+                <div class="post-section">
+                    <span class="post-section__label">Tags de Conteúdo</span>
+                    <div class="tags-grid">
+                        <button type="button" class="tag-select-btn" data-tag="duvida">Dúvida</button>
+                        <button type="button" class="tag-select-btn" data-tag="material">Material</button>
+                        <button type="button" class="tag-select-btn" data-tag="discussao">Discussão</button>
+                        <button type="button" class="tag-select-btn" data-tag="networking">Networking</button>
+                    </div>
+                    <span class="form-error" id="tagError">Selecione uma tag.</span>
+                    <input type="hidden" id="tagSelecionada" name="tag_id">
+                </div>
+
+                <!-- ==============================
+                     CONTEÚDO + PRÉ-VISUALIZAÇÃO
+                     ============================== -->
+                <div class="post-section">
+                    <span class="post-section__label">Conteúdo — Editor</span>
+
+                    <div class="editor-wrapper">
+
+                        <!-- Editor -->
+                        <div class="editor-pane">
+                            <!-- Toolbar de formatação -->
+                            <div class="editor-toolbar">
+                                <button type="button" class="editor-toolbar-btn" data-action="bold" title="Negrito (Ctrl+B)">
+                                    <strong>B</strong>
+                                </button>
+                                <button type="button" class="editor-toolbar-btn" data-action="italic" title="Itálico (Ctrl+I)">
+                                    <em>I</em>
+                                </button>
+                                <div class="editor-toolbar-divider"></div>
+                                <button type="button" class="editor-toolbar-btn" data-action="h2" title="Título">
+                                    H
+                                </button>
+                                <button type="button" class="editor-toolbar-btn" data-action="ul" title="Lista">
+                                    <i class="fa-solid fa-list-ul"></i>
+                                </button>
+                                <button type="button" class="editor-toolbar-btn" data-action="ol" title="Lista numerada">
+                                    <i class="fa-solid fa-list-ol"></i>
+                                </button>
+                                <div class="editor-toolbar-divider"></div>
+                                <button type="button" class="editor-toolbar-btn" data-action="code" title="Código inline">
+                                    <i class="fa-solid fa-code"></i>
+                                </button>
+                                <button type="button" class="editor-toolbar-btn" data-action="codeblock" title="Bloco de código">
+                                    <i class="fa-solid fa-terminal"></i>
+                                </button>
+                                <div class="editor-toolbar-divider"></div>
+                                <button type="button" class="editor-toolbar-btn" data-action="link" title="Link">
+                                    <i class="fa-solid fa-link"></i>
+                                </button>
+                            </div>
+
+                            <!-- Área de texto -->
+                            <textarea
+                                class="editor-textarea"
+                                id="postConteudo"
+                                name="conteudo"
+                                placeholder="Título da sua postagem...&#10;&#10;↳ DÚVIDA: Dúvida sobre listas encadeadas&#10;&#10;# Cabeçalho&#10;&#10;- Item 1&#10;- Item 2"
+                                maxlength="5000"
+                            ></textarea>
+
+                            <!-- Contador de caracteres -->
+                            <div class="editor-footer">
+                                <span class="editor-char-count" id="charCount">0 / 5000</span>
+                                <button type="button" class="btn btn--ghost btn--sm" id="btnPreviewMobile">
+                                    <i class="fa-solid fa-eye"></i> Pré-visualizar
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Pré-visualização em tempo real -->
+                        <div class="preview-pane" id="previewPane">
+                            <div class="preview-pane__header">
+                                <i class="fa-solid fa-eye"></i> Pré-visualização
+                            </div>
+                            <div class="preview-pane__content" id="previewContent">
+                                <p class="preview-pane__empty">A pré-visualização aparecerá aqui enquanto você escreve...</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <span class="form-error" id="conteudoError">O conteúdo é obrigatório.</span>
+                </div>
+
+                <!-- ==============================
+                     ANEXOS
+                     ============================== -->
+                <div class="post-section">
+                    <span class="post-section__label">Anexos</span>
+
+                    <div class="anexos-dropzone" id="dropzone">
+                        <input
+                            type="file"
+                            id="anexoInput"
+                            class="anexos-dropzone__input"
+                            multiple
+                            accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.gif,.zip,.txt"
+                        >
+                        <div class="anexos-dropzone__icon">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                        </div>
+                        <p class="anexos-dropzone__text">
+                            Arraste e solte arquivos aqui (PDFs, Imagens, Documentos)
+                            <br>ou <span>clique para selecionar</span>
+                        </p>
+                    </div>
+
+                    <!-- Lista dos arquivos selecionados -->
+                    <div class="anexos-list" id="anexosList"></div>
+                </div>
+
+                <!-- ==============================
+                     BARRA DE AÇÕES
+                     ============================== -->
+                <div class="post-actions-bar">
+                    <a href="feed.html" class="btn btn--outline">
+                        <i class="fa-solid fa-xmark"></i> Cancelar
+                    </a>
+                    <button type="button" class="btn btn--ghost" id="btnRascunho">
+                        <i class="fa-regular fa-floppy-disk"></i> Salvar Rascunho
+                    </button>
+                    <button type="submit" class="btn btn--accent btn-submit" id="btnPublicar">
+                        <span class="btn-text">
+                            <i class="fa-solid fa-paper-plane"></i> Publicar
+                        </span>
+                        <span class="spinner" id="spinnerPublicar"></span>
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </main>
+
+</div>
+
+<script src="js/utils.js"></script>
+<script src="js/api.js"></script>
+<script src="js/moderacao.js"></script>
+<script src="js/main.js"></script>
+<script src="js/criar-post.js"></script>
+
+</body>
+</html>
