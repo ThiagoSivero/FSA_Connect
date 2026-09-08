@@ -1,0 +1,303 @@
+/* ================================================
+   quem-somos.css
+   Estilos da página Quem Somos do FSA Connect.
+   Hero com foto da FSA, seção da equipe,
+   missão/visão/valores e CTA.
+   ================================================ */
+
+/* -------------------------
+   Hero
+   ------------------------- */
+.qs-hero {
+    position: relative;
+    height: 280px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    margin-top: var(--navbar-height);
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+}
+
+/* Overlay com padrão geométrico */
+.qs-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.qs-hero__content {
+    position: relative;
+    padding: var(--spacing-xl) var(--spacing-2xl);
+    z-index: 1;
+}
+
+.qs-hero__title {
+    font-size: 3rem;
+    font-weight: var(--font-weight-bold);
+    color: #fff;
+    letter-spacing: -1px;
+    line-height: 1;
+}
+
+/* -------------------------
+   Layout principal
+   ------------------------- */
+.qs-main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--spacing-2xl) var(--spacing-lg);
+}
+
+/* -------------------------
+   Seções
+   ------------------------- */
+.qs-section {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.qs-section__text-block {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-card);
+}
+
+.qs-section__subtitle {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-main);
+    margin-bottom: var(--spacing-md);
+}
+
+.qs-section__text-block p {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: 1.75;
+    margin-bottom: var(--spacing-md);
+}
+
+.qs-section__text-block p:last-child {
+    margin-bottom: 0;
+}
+
+/* -------------------------
+   Equipe
+   ------------------------- */
+.qs-team-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-main);
+    margin-bottom: var(--spacing-lg);
+}
+
+.qs-team-grid {
+    display: flex;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.qs-team-card {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-md) var(--spacing-lg);
+    flex: 1;
+    min-width: 200px;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+}
+
+.qs-team-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+.qs-team-card__avatar {
+    flex-shrink: 0;
+    background-color: var(--color-primary);
+}
+
+.qs-team-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.qs-team-card__name {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-main);
+}
+
+.qs-team-card__course {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* -------------------------
+   Missão, Visão e Valores
+   ------------------------- */
+.qs-mvv-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+}
+
+.qs-mvv-card {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    text-align: center;
+    transition: all var(--transition-fast);
+}
+
+.qs-mvv-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.qs-mvv-card__icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: #EFF6FF;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    margin: 0 auto var(--spacing-md);
+}
+
+.qs-mvv-card__title {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-main);
+    margin-bottom: var(--spacing-sm);
+}
+
+.qs-mvv-card__text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+/* -------------------------
+   CTA
+   ------------------------- */
+.qs-cta {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    border-radius: var(--border-radius-xl);
+    padding: var(--spacing-2xl);
+    text-align: center;
+    color: #fff;
+}
+
+.qs-cta__title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-sm);
+}
+
+.qs-cta__text {
+    font-size: var(--font-size-base);
+    opacity: 0.85;
+    margin-bottom: var(--spacing-xl);
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.qs-cta__actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.qs-cta .btn--primary {
+    background-color: #fff;
+    color: var(--color-primary);
+}
+
+.qs-cta .btn--primary:hover {
+    background-color: #F0F7FF;
+}
+
+.qs-cta .btn--outline {
+    border-color: rgba(255,255,255,0.5);
+    color: #fff;
+}
+
+.qs-cta .btn--outline:hover {
+    border-color: #fff;
+    background-color: rgba(255,255,255,0.1);
+    color: #fff;
+}
+
+/* -------------------------
+   Footer
+   ------------------------- */
+.qs-footer {
+    background-color: var(--color-primary);
+    color: rgba(255,255,255,0.7);
+    padding: var(--spacing-xl) var(--spacing-lg);
+}
+
+.qs-footer__inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    text-align: center;
+}
+
+.qs-footer__links {
+    display: flex;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.qs-footer__links a {
+    color: rgba(255,255,255,0.7);
+    font-size: var(--font-size-sm);
+    transition: color var(--transition-fast);
+}
+
+.qs-footer__links a:hover {
+    color: #fff;
+}
+
+.qs-footer__copy {
+    font-size: var(--font-size-xs);
+    color: rgba(255,255,255,0.5);
+}
+
+/* -------------------------
+   Responsivo
+   ------------------------- */
+@media (max-width: 768px) {
+    .qs-hero__title { font-size: 2rem; }
+    .qs-mvv-grid   { grid-template-columns: 1fr; }
+    .qs-team-grid  { flex-direction: column; }
+
+    .qs-team-card {
+        min-width: unset;
+    }
+}
+
+@media (max-width: 480px) {
+    .qs-hero { height: 200px; }
+    .qs-hero__content { padding: var(--spacing-lg); }
+    .qs-main { padding: var(--spacing-lg) var(--spacing-md); }
+}

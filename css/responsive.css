@@ -1,0 +1,146 @@
+/* ================================================
+   responsive.css
+   Media queries do FSA Connect.
+   Garante funcionamento em desktop, notebook,
+   tablet e smartphone.
+   ================================================ */
+
+/* -------------------------
+   Tablet (até 1024px)
+   ------------------------- */
+@media (max-width: 1024px) {
+
+    /* Esconde sidebar direita em tablets */
+    .aside {
+        display: none;
+    }
+
+    /* Conteúdo ocupa mais espaço */
+    .main-content {
+        padding-right: var(--spacing-lg);
+    }
+}
+
+/* -------------------------
+   Mobile grande (até 768px)
+   ------------------------- */
+@media (max-width: 768px) {
+
+    /* Esconde sidebar esquerda, mostra botão hambúrguer */
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform var(--transition-normal);
+        z-index: 150;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    /* Overlay escuro quando sidebar está aberta */
+    .sidebar-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.4);
+        z-index: 140;
+    }
+
+    .sidebar-overlay.active {
+        display: block;
+    }
+
+    /* Botão hambúrguer na navbar */
+    .navbar__hamburger {
+        display: flex;
+    }
+
+    /* Conteúdo principal ocupa tudo */
+    .main-content {
+        padding-left: var(--spacing-md);
+        padding-right: var(--spacing-md);
+        margin: 0;
+        max-width: 100%;
+    }
+
+    /* Navbar: oculta texto do usuário */
+    .navbar__user-name {
+        display: none;
+    }
+
+    /* Busca menor */
+    .navbar__search {
+        max-width: 100%;
+    }
+}
+
+/* -------------------------
+   Mobile pequeno (até 480px)
+   ------------------------- */
+@media (max-width: 480px) {
+
+    .navbar {
+        padding: 0 var(--spacing-md);
+        gap: var(--spacing-sm);
+    }
+
+    .navbar__logo {
+        font-size: var(--font-size-lg);
+    }
+
+    .navbar__search {
+        max-width: 160px;
+    }
+
+    .btn--lg {
+        padding: 0.65rem 1rem;
+        font-size: var(--font-size-sm);
+    }
+
+    .card {
+        border-radius: var(--border-radius-md);
+    }
+}
+
+/* -------------------------
+   Hambúrguer (oculto no desktop)
+   ------------------------- */
+.navbar__hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: var(--border-radius-sm);
+    transition: background-color var(--transition-fast);
+}
+
+.navbar__hamburger:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+.navbar__hamburger span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: all var(--transition-fast);
+}
+
+/* Animação do hambúrguer quando aberto */
+.navbar__hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.navbar__hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar__hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
