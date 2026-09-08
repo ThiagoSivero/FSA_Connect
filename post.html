@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post — FSA Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/post.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <button class="navbar__hamburger" id="btnHamburger"><span></span><span></span><span></span></button>
+    <a href="../feed.html" class="navbar__logo">FSA <span>Connect</span></a>
+    <div class="navbar__search">
+        <i class="fa-solid fa-magnifying-glass navbar__search-icon"></i>
+        <input type="search" placeholder="Pesquisar...">
+    </div>
+    <div class="navbar__user" id="navbarUser">
+        <div class="navbar__avatar" id="navbarAvatar">TS</div>
+        <span class="navbar__user-name" id="navbarUserName">Thiago Sivero</span>
+        <div class="navbar__dropdown" id="navbarDropdown">
+            <a href="../perfil.html"><i class="fa-solid fa-user"></i> Meu Perfil</a>
+            <div class="dropdown-divider"></div>
+            <a href="../login.html" class="logout" id="btnLogout">
+                <i class="fa-solid fa-right-from-bracket"></i> Sair
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<div class="app-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar__section">
+            <nav class="sidebar__nav">
+                <a href="../feed.html"><i class="fa-solid fa-house nav-icon"></i> Início</a>
+                <a href="../feed.html?filter=duvida"><i class="fa-solid fa-circle-question nav-icon"></i> Dúvidas</a>
+                <a href="../feed.html?filter=material"><i class="fa-solid fa-book nav-icon"></i> Materiais</a>
+                <a href="../feed.html?filter=networking"><i class="fa-solid fa-briefcase nav-icon"></i> Networking</a>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Conteúdo do post -->
+    <main class="main-content">
+        <div class="post-detail" id="postDetail">
+
+            <!-- Breadcrumb -->
+            <nav class="post-breadcrumb">
+                <a href="../feed.html"><i class="fa-solid fa-house"></i> Feed</a>
+                <i class="fa-solid fa-chevron-right"></i>
+                <span id="breadcrumbComunidade">Comunidade</span>
+            </nav>
+
+            <!-- Skeleton enquanto carrega -->
+            <div id="postSkeleton">
+                <div class="skeleton-card" style="padding:24px;">
+                    <div class="skeleton skeleton-line short" style="width:80px; height:24px; margin-bottom:16px;"></div>
+                    <div class="skeleton skeleton-line long" style="height:28px; margin-bottom:8px;"></div>
+                    <div class="skeleton skeleton-line medium" style="height:18px; margin-bottom:24px;"></div>
+                    <div class="skeleton skeleton-line full"></div>
+                    <div class="skeleton skeleton-line full" style="margin-top:8px;"></div>
+                    <div class="skeleton skeleton-line medium" style="margin-top:8px;"></div>
+                </div>
+            </div>
+
+            <!-- Conteúdo real do post (populado via JS) -->
+            <div id="postContent" class="hidden"></div>
+
+            <!-- Seção de comentários -->
+            <section class="comentarios-section" id="comentariosSection">
+                <h3 class="comentarios-title" id="comentariosTitle">Comentários</h3>
+
+                <!-- Formulário de novo comentário -->
+                <div class="comentario-form-wrapper" id="comentarioFormWrapper">
+                    <div class="avatar avatar--md" id="comentarioAvatar">TS</div>
+                    <div class="comentario-form">
+                        <textarea
+                            class="form-input comentario-textarea"
+                            id="comentarioTexto"
+                            placeholder="Escreva um comentário..."
+                            rows="3"
+                        ></textarea>
+                        <div class="comentario-form-actions">
+                            <button class="btn btn--primary btn--sm" id="btnEnviarComentario">
+                                <i class="fa-solid fa-paper-plane"></i> Comentar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lista de comentários -->
+                <div class="comentarios-list" id="comentariosList">
+                    <!-- Populado via JS -->
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Aside -->
+    <aside class="aside">
+        <div class="aside-section">
+            <p class="aside-section__title">Sobre esta comunidade</p>
+            <div id="comunidadeInfo" class="comunidade-info-card">
+                <!-- Populado via JS -->
+            </div>
+        </div>
+        <div class="aside-section">
+            <p class="aside-section__title">Posts relacionados</p>
+            <div id="postsRelacionados">
+                <!-- Populado via JS -->
+            </div>
+        </div>
+    </aside>
+
+</div>
+
+<script src="../js/utils.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/moderacao.js"></script>
+<script src="../js/post.js"></script>
+
+</body>
+</html>
