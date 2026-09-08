@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil — FSA Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/feed.css">
+    <link rel="stylesheet" href="css/perfil.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <button class="navbar__hamburger" id="btnHamburger" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+    </button>
+    <a href="feed.html" class="navbar__logo">FSA <span>Connect</span></a>
+    <div class="navbar__search">
+        <i class="fa-solid fa-magnifying-glass navbar__search-icon"></i>
+        <input type="search" id="searchInput" placeholder="Pesquisar materiais, dúvidas ou disciplinas...">
+    </div>
+    <div class="navbar__user" id="navbarUser">
+        <div class="navbar__avatar" id="navbarAvatar">TS</div>
+        <span class="navbar__user-name" id="navbarUserName">Thiago Sivero</span>
+        <div class="navbar__dropdown" id="navbarDropdown">
+            <a href="perfil.html"><i class="fa-solid fa-user"></i> Meu Perfil</a>
+            <a href="criar-post.html"><i class="fa-solid fa-plus"></i> Nova Postagem</a>
+            <div class="dropdown-divider"></div>
+            <a href="login.html" class="logout" id="btnLogout">
+                <i class="fa-solid fa-right-from-bracket"></i> Sair
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<div class="app-layout">
+
+    <!-- Sidebar esquerda -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar__section">
+            <nav class="sidebar__nav">
+                <a href="feed.html"><i class="fa-solid fa-house nav-icon"></i> Início</a>
+                <a href="feed.html?filter=duvida"><i class="fa-solid fa-circle-question nav-icon"></i> Dúvidas</a>
+                <a href="feed.html?filter=material"><i class="fa-solid fa-book nav-icon"></i> Materiais de Estudo</a>
+                <a href="feed.html?filter=networking"><i class="fa-solid fa-briefcase nav-icon"></i> Networking / Vagas</a>
+            </nav>
+        </div>
+        <div class="sidebar__divider"></div>
+        <div class="sidebar__section">
+            <p class="sidebar__title">Minhas Comunidades</p>
+            <nav class="sidebar__nav" id="sidebarComunidades"></nav>
+        </div>
+    </aside>
+
+    <!-- Conteúdo principal -->
+    <main class="main-content">
+
+        <!-- Card do perfil -->
+        <div class="perfil-card" id="perfilCard">
+
+            <!-- Capa -->
+            <div class="perfil-cover" id="perfilCover"></div>
+
+            <!-- Informações -->
+            <div class="perfil-info">
+
+                <!-- Avatar -->
+                <div class="perfil-avatar-wrapper">
+                    <div class="perfil-avatar" id="perfilAvatar">TS</div>
+                    <button class="perfil-avatar-edit" id="btnEditarAvatar" aria-label="Editar foto">
+                        <i class="fa-solid fa-camera"></i>
+                    </button>
+                </div>
+
+                <!-- Botões de ação -->
+                <div class="perfil-actions" id="perfilActions">
+                    <!-- Populado via JS conforme perfil próprio ou de outro usuário -->
+                </div>
+
+                <!-- Nome e informações -->
+                <h1 class="perfil-nome" id="perfilNome">Thiago Sivero Almeida</h1>
+                <p class="perfil-curso" id="perfilCurso">Ciência da Computação — 3º Semestre</p>
+                <p class="perfil-bio" id="perfilBio">
+                    Estudante de Ciência da Computação na FSA; Tecnico em Análise e Desenvolvimento de Sistemas SENAI.
+                </p>
+
+                <!-- Estatísticas -->
+                <div class="perfil-stats">
+                    <div class="perfil-stat" data-tab="posts">
+                        <span class="perfil-stat__value" id="statPosts">0</span>
+                        <span class="perfil-stat__label">Posts Criados</span>
+                    </div>
+                    <div class="perfil-stat" data-tab="materiais">
+                        <span class="perfil-stat__value" id="statMateriais">0</span>
+                        <span class="perfil-stat__label">Materiais Compartilhados</span>
+                    </div>
+                    <div class="perfil-stat" data-tab="conexoes">
+                        <span class="perfil-stat__value" id="statConexoes">0</span>
+                        <span class="perfil-stat__label">Conexões</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Abas -->
+        <div class="perfil-tabs">
+            <button class="perfil-tab active" data-tab="posts">
+                <i class="fa-solid fa-file-lines"></i> Posts
+            </button>
+            <button class="perfil-tab" data-tab="materiais">
+                <i class="fa-solid fa-book"></i> Materiais
+            </button>
+            <button class="perfil-tab" data-tab="conexoes">
+                <i class="fa-solid fa-user-group"></i> Conexões
+            </button>
+            <button class="perfil-tab" data-tab="salvos">
+                <i class="fa-solid fa-bookmark"></i> Salvos
+            </button>
+        </div>
+
+        <!-- Conteúdo das abas -->
+        <div class="perfil-tab-content active" id="tab-posts">
+            <div class="perfil-posts" id="listaPosts">
+                <!-- Populado via JS -->
+            </div>
+        </div>
+
+        <div class="perfil-tab-content" id="tab-materiais">
+            <div class="perfil-posts" id="listaMateriais">
+                <!-- Populado via JS -->
+            </div>
+        </div>
+
+        <div class="perfil-tab-content" id="tab-conexoes">
+            <div class="conexoes-grid" id="listaConexoes">
+                <!-- Populado via JS -->
+            </div>
+        </div>
+
+        <div class="perfil-tab-content" id="tab-salvos">
+            <div class="perfil-posts" id="listaSalvos">
+                <!-- Populado via JS -->
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Aside direita -->
+    <aside class="aside">
+        <div class="aside-section">
+            <p class="aside-section__title">Comunidades</p>
+            <div id="asideComunidades"></div>
+        </div>
+        <div class="aside-section">
+            <p class="aside-section__title">Top Contribuintes</p>
+            <div class="contributor-list" id="contributorList"></div>
+        </div>
+        <div class="aside-footer">
+            <div class="aside-footer__links">
+                <a href="pages/termos.html">Termos de uso</a>
+                <a href="pages/quem-somos.html">Sobre nós</a>
+                <a href="feed.html">Home</a>
+            </div>
+            <p class="aside-footer__copy">© 2026 FSA Connect</p>
+        </div>
+    </aside>
+
+</div>
+
+<!-- Modal de edição do perfil -->
+<div class="modal-overlay hidden" id="modalEditarPerfil">
+    <div class="modal">
+        <div class="modal__header">
+            <h2 class="modal__title">Editar Perfil</h2>
+            <button class="modal__close" id="btnFecharModal" aria-label="Fechar">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="modal__body">
+            <div class="form-group">
+                <label class="form-label" for="editNome">Nome completo</label>
+                <input class="form-input" type="text" id="editNome" placeholder="Seu nome completo">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="editCurso">Curso</label>
+                <select class="form-input" id="editCurso">
+                    <option value="1">Ciência da Computação</option>
+                    <option value="2">Engenharia de Software</option>
+                    <option value="3">Sistemas de Informação</option>
+                    <option value="4">ADS</option>
+                    <option value="5">Administração</option>
+                    <option value="6">Pedagogia</option>
+                    <option value="7">Biomedicina</option>
+                    <option value="8">Direito</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="editSemestre">Semestre</label>
+                <select class="form-input" id="editSemestre">
+                    <option value="1">1º Semestre</option>
+                    <option value="2">2º Semestre</option>
+                    <option value="3" selected>3º Semestre</option>
+                    <option value="4">4º Semestre</option>
+                    <option value="5">5º Semestre</option>
+                    <option value="6">6º Semestre</option>
+                    <option value="7">7º Semestre</option>
+                    <option value="8">8º Semestre</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="editBio">Bio</label>
+                <textarea class="form-input" id="editBio" rows="3"
+                    placeholder="Fale um pouco sobre você..." maxlength="200"></textarea>
+                <span class="text-xs text-muted" id="bioCount">0 / 200</span>
+            </div>
+        </div>
+        <div class="modal__footer">
+            <button class="btn btn--outline" id="btnCancelarModal">Cancelar</button>
+            <button class="btn btn--primary" id="btnSalvarPerfil">
+                <i class="fa-solid fa-check"></i> Salvar alterações
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="js/utils.js"></script>
+<script src="js/api.js"></script>
+<script src="js/perfil.js"></script>
+
+</body>
+</html>
