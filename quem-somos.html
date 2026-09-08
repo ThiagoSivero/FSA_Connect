@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quem Somos — FSA Connect</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/quem-somos.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <button class="navbar__hamburger" id="btnHamburger"><span></span><span></span><span></span></button>
+    <a href="../feed.html" class="navbar__logo">FSA <span>Connect</span></a>
+    <div class="navbar__search">
+        <i class="fa-solid fa-magnifying-glass navbar__search-icon"></i>
+        <input type="search" placeholder="Pesquisar...">
+    </div>
+    <div class="navbar__user" id="navbarUser">
+        <div class="navbar__avatar" id="navbarAvatar">TS</div>
+        <span class="navbar__user-name" id="navbarUserName">Thiago Sivero</span>
+        <div class="navbar__dropdown" id="navbarDropdown">
+            <a href="../perfil.html"><i class="fa-solid fa-user"></i> Meu Perfil</a>
+            <div class="dropdown-divider"></div>
+            <a href="../login.html" class="logout" id="btnLogout">
+                <i class="fa-solid fa-right-from-bracket"></i> Sair
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- Hero com foto da FSA -->
+<div class="qs-hero">
+    <div class="qs-hero__overlay"></div>
+    <div class="qs-hero__content">
+        <h1 class="qs-hero__title">Quem Somos</h1>
+    </div>
+</div>
+
+<main class="qs-main">
+
+    <!-- Sobre o projeto -->
+    <section class="qs-section">
+        <div class="qs-section__text-block">
+            <h2 class="qs-section__subtitle">Quem somos</h2>
+            <p>
+                Somos uma equipe dedicada ao desenvolvimento do FSA Connect, uma plataforma digital criada para
+                fortalecer a colaboração e a comunicação entre estudantes universitários. Nosso objetivo é construir
+                um ambiente interativo onde os alunos possam compartilhar conhecimentos, tirar dúvidas, trocar
+                materiais de estudo e discutir conteúdos acadêmicos de forma organizada.
+            </p>
+            <p>
+                Acreditamos no aprendizado colaborativo como uma ferramenta essencial para o crescimento acadêmico,
+                por isso buscamos facilitar a conexão entre estudantes de diferentes cursos e períodos. Mais do que
+                uma plataforma, queremos criar uma comunidade que incentive a troca de experiências, o apoio mútuo e
+                o networking dentro do ambiente universitário.
+            </p>
+        </div>
+    </section>
+
+    <!-- Equipe -->
+    <section class="qs-section">
+        <h2 class="qs-team-title">Equipe FSA Connect</h2>
+        <div class="qs-team-grid">
+
+            <div class="qs-team-card">
+                <div class="avatar avatar--xl qs-team-card__avatar">TS</div>
+                <div class="qs-team-card__info">
+                    <h3 class="qs-team-card__name">Thiago Sivero</h3>
+                    <p class="qs-team-card__course">Cie. da Computação</p>
+                    <a href="../perfil.html?id=1" class="btn btn--outline btn--sm">Ver Perfil</a>
+                </div>
+            </div>
+
+            <div class="qs-team-card">
+                <div class="avatar avatar--xl qs-team-card__avatar">KA</div>
+                <div class="qs-team-card__info">
+                    <h3 class="qs-team-card__name">Kevin de Aquino</h3>
+                    <p class="qs-team-card__course">Cie. da Computação</p>
+                    <a href="../perfil.html?id=2" class="btn btn--outline btn--sm">Ver Perfil</a>
+                </div>
+            </div>
+
+            <div class="qs-team-card">
+                <div class="avatar avatar--xl qs-team-card__avatar" style="background-color:#7C3AED;">KS</div>
+                <div class="qs-team-card__info">
+                    <h3 class="qs-team-card__name">Kauan Santos</h3>
+                    <p class="qs-team-card__course">Cie. da Computação</p>
+                    <a href="../perfil.html?id=3" class="btn btn--outline btn--sm">Ver Perfil</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Missão, visão e valores -->
+    <section class="qs-section">
+        <div class="qs-mvv-grid">
+
+            <div class="qs-mvv-card">
+                <div class="qs-mvv-card__icon">
+                    <i class="fa-solid fa-bullseye"></i>
+                </div>
+                <h3 class="qs-mvv-card__title">Nossa Missão</h3>
+                <p class="qs-mvv-card__text">
+                    Conectar estudantes universitários em uma plataforma colaborativa que facilite o aprendizado,
+                    o compartilhamento de conhecimento e o crescimento acadêmico coletivo.
+                </p>
+            </div>
+
+            <div class="qs-mvv-card">
+                <div class="qs-mvv-card__icon" style="background-color:#EFF6FF; color:var(--color-accent);">
+                    <i class="fa-solid fa-eye"></i>
+                </div>
+                <h3 class="qs-mvv-card__title">Nossa Visão</h3>
+                <p class="qs-mvv-card__text">
+                    Ser a principal plataforma de colaboração acadêmica para universitários brasileiros,
+                    tornando o aprendizado mais acessível, dinâmico e colaborativo.
+                </p>
+            </div>
+
+            <div class="qs-mvv-card">
+                <div class="qs-mvv-card__icon" style="background-color:#F0FDF4; color:var(--color-success);">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+                <h3 class="qs-mvv-card__title">Nossos Valores</h3>
+                <p class="qs-mvv-card__text">
+                    Colaboração, inclusão, respeito, aprendizado contínuo e compromisso com o desenvolvimento
+                    acadêmico e profissional de cada estudante.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="qs-cta">
+        <h2 class="qs-cta__title">Faça parte da comunidade</h2>
+        <p class="qs-cta__text">
+            Junte-se a milhares de estudantes que já estão colaborando, aprendendo e crescendo juntos no FSA Connect.
+        </p>
+        <div class="qs-cta__actions">
+            <a href="../feed.html" class="btn btn--primary btn--lg">
+                <i class="fa-solid fa-house"></i> Ir para o Feed
+            </a>
+            <a href="../criar-post.html" class="btn btn--outline btn--lg">
+                <i class="fa-solid fa-plus"></i> Criar Postagem
+            </a>
+        </div>
+    </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="qs-footer">
+    <div class="qs-footer__inner">
+        <span class="navbar__logo" style="font-size:1rem;">FSA <span style="color:#93C5FD;">Connect</span></span>
+        <div class="qs-footer__links">
+            <a href="termos.html">Termos de uso</a>
+            <a href="privacidade.html">Privacidade</a>
+            <a href="../feed.html">Home</a>
+            <a href="#">Staff</a>
+        </div>
+        <p class="qs-footer__copy">© 2026 FSA Connect · Todos os direitos reservados</p>
+    </div>
+</footer>
+
+<script src="../js/utils.js"></script>
+<script src="../js/quem-somos.js"></script>
+
+</body>
+</html>
